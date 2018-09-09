@@ -41,13 +41,14 @@ export const signIn = (input, cb) => async dispatch => {
 
 export const autoSignIn = (refToken, cb) => async dispatch => {
   try {
-    const params = new URLSearchParams();
-    params.append('grant_type', 'refresh_token');
-    params.append('refresh_token', refToken);
-    const { data } = await axios.post(
-      `https://securetoken.googleapis.com/v1/token?key=${API_KEY}`,
-      params
-    );
+    const { data } = await axios({
+      method: 'POST',
+      url: `https://securetoken.googleapis.com/v1/token?key=${API_KEY}`,
+      data: `grant_type=refresh_token&refresh_token=${refToken}`,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
     const { user_id, id_token, refresh_token } = data;
     dispatch({
       type: AUTO_SIGNIN,
