@@ -57,6 +57,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/tongnakub/Code/poc/react-native/sellit/android/app/build/intermediates/exploded-aar/sellit/react-native-vector-icons/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="279750fed3c920d06351dbf32889c1b48203c7ad">
+        <dex dex="/Users/tongnakub/Code/poc/react-native/sellit/android/app/build/intermediates/pre-dexed/debug/sellit-react-native-vector-icons-unspecified_97688d0041286708500de009d332dee000817001.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/tongnakub/Code/poc/react-native/sellit/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
