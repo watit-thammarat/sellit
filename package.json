@@ -11,7 +11,7 @@
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",
-    "ios": "react-native run-ios --simulator=\"iPhone 8 Plus\"",
+    "ios": "react-native run-ios",
     "test": "jest",
     "link": "react-native link"
   },
