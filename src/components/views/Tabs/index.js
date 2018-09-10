@@ -1,7 +1,7 @@
 import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default async () => {
+export default async allow => {
   const [barsIcon, dollarIcon, searchIcon] = await Promise.all([
     Icon.getImageSource('bars', 20, 'white'),
     Icon.getImageSource('dollar', 20, 'white'),
@@ -39,7 +39,7 @@ export default async () => {
         navigatorButtons
       },
       {
-        screen: 'sellit.AddPost',
+        screen: allow ? 'sellit.AddPost' : 'sellit.NotAllow',
         label: 'Sell it',
         title: 'Sell it',
         icon: dollarIcon,

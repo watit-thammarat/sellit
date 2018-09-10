@@ -8,7 +8,6 @@ import Input from '../../utils/forms/Input';
 import { iOS, ANDROID } from '../../utils/constant';
 import validationRules from '../../utils/forms/validationRules';
 import loadTabs from '../Tabs';
-import { setTokens, getTokens } from '../../utils/misc';
 
 class LoginForm extends Component {
   state = {
@@ -45,11 +44,6 @@ class LoginForm extends Component {
       }
     }
   };
-
-  // async componentDidMount() {
-  //   const data = await getTokens();
-  //   console.log(data);
-  // }
 
   updateInput = (name, value) => {
     this.setState({ hasErrors: false });
@@ -126,8 +120,7 @@ class LoginForm extends Component {
     if (err || !userData) {
       this.setState({ hasErrors: true });
     } else {
-      await setTokens(userData);
-      loadTabs();
+      loadTabs(true);
     }
   };
 
@@ -194,7 +187,7 @@ class LoginForm extends Component {
           <Button
             title="I'll do it later"
             color="lightgrey"
-            onPress={() => loadTabs()}
+            onPress={() => loadTabs(false)}
           />
         </View>
       </View>

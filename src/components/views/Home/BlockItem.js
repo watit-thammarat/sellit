@@ -1,34 +1,40 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 
-const BlockItem = ({ item, index }, left = true) => {
-  const renderBlock = ({ title, price }) => (
-    <TouchableOpacity
-      style={{ flex: 1 }}
-      onPress={() => console.log('go to post')}
-    >
-      <View
-        style={[
-          styles.blockGridStyle,
-          left ? styles.blockGridLeftStyle : styles.blockGridRightStyle
-        ]}
+const BlockItem = ({ item, index, goto }, left = true) => {
+  const renderBlock = block => {
+    const { title, price } = block;
+    return (
+      <TouchableOpacity
+        style={{ flex: 1 }}
+        onPress={() => {
+          goto(block);
+        }}
       >
-        <View>
-          <Image
-            source={{
-              uri: 'https://loremflickr.com/400/400/gridTwoColumns,brazil,dog'
-            }}
-            resizeMode="cover"
-            style={styles.itemImage}
-          />
+        <View
+          style={[
+            styles.blockGridStyle,
+            left ? styles.blockGridLeftStyle : styles.blockGridRightStyle
+          ]}
+        >
+          <View>
+            <Image
+              source={{
+                uri: 'https://loremflickr.com/400/400/gridTwoColumns,brazil,dog'
+              }}
+              resizeMode="cover"
+              style={styles.itemImage}
+            />
+          </View>
+          <View style={styles.itemTextContainer}>
+            <Text style={styles.itemTextTitle}>{title}</Text>
+            <Text style={styles.itemTextPrice}>${price}</Text>
+          </View>
         </View>
-        <View style={styles.itemTextContainer}>
-          <Text style={styles.itemTextTitle}>{title}</Text>
-          <Text style={styles.itemTextPrice}>${price}</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
-  );
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View>
       <View style={styles.blockRow}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Picker } from 'react-native';
 
 const Input = props => {
   let content = null;
@@ -13,6 +13,14 @@ const Input = props => {
         />
       );
       break;
+    case 'picker':
+      content = (
+        <Picker selectedValue={props.value} {...props}>
+          {props.options.map((o, i) => (
+            <Picker.Item key={i} value={o} label={o} />
+          ))}
+        </Picker>
+      );
     default:
       return content;
   }

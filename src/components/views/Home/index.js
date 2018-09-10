@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  ScrollView,
-  ActivityIndicator
-} from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -64,9 +58,25 @@ class Home extends Component {
     </View>
   );
 
+  goToArticleHandler = articleData => {
+    this.props.navigator.push({
+      screen: 'sellit.Article',
+      passProps: { articleData },
+      animationType: 'slide-horizontal',
+      backButtonTitle: 'Back to Home',
+      navigatorStyle: {
+        navBarTextFontSize: 20,
+        navBarTextColor: '#fff',
+        navBarTextFontFamily: 'RobotoCondensed-Bold',
+        navBarBackgroundColor: '#00ada9',
+        screenBackgroundColor: '#fff'
+      }
+    });
+  };
+
   showArticles = () => {
     return this.state.articles.map((a, i) => (
-      <BlockItem key={i} item={a} index={i} />
+      <BlockItem key={i} item={a} index={i} goto={this.goToArticleHandler} />
     ));
   };
 

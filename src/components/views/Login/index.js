@@ -15,8 +15,7 @@ import {
   setOrientationListener,
   removeOrientationListener,
   getPlatform,
-  getTokens,
-  setTokens
+  getTokens
 } from '../../utils/misc';
 import LoginPanel from './LoginPanel';
 import { autoSignIn } from '../../store/actions/users';
@@ -45,8 +44,7 @@ class Login extends Component {
           console.log(err);
           this.setState({ loading: false });
         } else {
-          await setTokens(this.props.user.userData);
-          loadTabs();
+          loadTabs(true);
         }
       });
     }

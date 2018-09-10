@@ -18,6 +18,8 @@ const validateRule = (rule, value, ruleValue, form) => {
       return validateEmail(value);
     case 'minLength':
       return validateMinLength(value, ruleValue);
+    case 'maxLength':
+      return validateMaxLength(value, ruleValue);
     case 'confirmPass':
       return validateConfirmPass(value, form[ruleValue].value);
   }
@@ -32,5 +34,8 @@ const validateEmail = value => {
 
 const validateMinLength = (value, minLength) =>
   value.trim().length >= minLength;
+
+const validateMaxLength = (value, maxLength) =>
+  value.trim().length <= maxLength;
 
 const validateConfirmPass = (value, passwordValue) => value === passwordValue;

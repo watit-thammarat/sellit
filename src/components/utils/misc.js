@@ -19,9 +19,12 @@ export const getPlatform = () => {
   return Platform.OS === iOS ? iOS : ANDROID;
 };
 
-export const setTokens = async ({ uid, token, refToken }) => {
+export const getExpiration = () => {
   const now = new Date();
-  const expiration = now.getTime() + 3600 * 1000;
+  return now.getTime() + 3600 * 1000;
+};
+
+export const setTokens = async ({ uid, token, refToken, expiration }) => {
   await AsyncStorage.multiSet([
     ['token', token],
     ['refToken', refToken],
